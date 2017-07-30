@@ -20,21 +20,39 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id' => 2,
-                'name' => 'sensei',
-                'email' => 'me2@me.com',
+                'name' => 'sensei mark',
+                'email' => 'asd1@asd.com',
+                'password' => bcrypt('asd'),
+            ],
+            [
+                'id' => 3,
+                'name' => 'sensei stu',
+                'email' => 'asd2@asd.com',
                 'password' => bcrypt('asd'),
             ]
         ]);
 
         DB::table('dojos')->insert([
-            'name' => 'CMW',
-            'address' => 'asdasd',
-            'info' => json_encode([
-                'info' => 'test'
-            ]),
-            'teacher_id' => 2,
-            'latitude' => 52.417506,
-            'longitude' => -1.8970728
+            [
+                'name' => 'CMW',
+                'address' => 'asdasd',
+                'info' => json_encode([
+                    'info' => 'test'
+                ]),
+                'teacher_id' => 2,
+                'latitude' => 52.417506,
+                'longitude' => -1.8970728
+            ],
+            [
+                'name' => 'todor grange',
+                'address' => 'asdasd',
+                'info' => json_encode([
+                    'info' => 'test'
+                ]),
+                'teacher_id' => 3,
+                'latitude' => 52.417506,
+                'longitude' => -1.8970728
+            ]
         ]);
     }
 }
