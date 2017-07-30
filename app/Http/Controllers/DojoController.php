@@ -8,5 +8,8 @@ use App\Http\Requests;
 
 class DojoController extends Controller
 {
-    //
+    public function index()
+    {
+        return view('dojos');
+    }
 }
