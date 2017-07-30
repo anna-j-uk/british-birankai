@@ -21,4 +21,5 @@ Route::get('/home', 'HomeController@index');
 
 Route::group([ 'prefix' => 'dojos'], function () {
     Route::get('/', 'DojoController@index');
+    Route::get('/{dojo}', 'DojoController@show');
 });
