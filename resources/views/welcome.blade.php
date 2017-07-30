@@ -56,7 +56,7 @@
                 <p>Donec nec facilisis quam. Aliquam semper vehicula viverra. Sed porttitor magna eget nunc ornare pellentesque. Suspendisse interdum, est suscipit efficitur molestie, ante libero ornare sapien, vel consectetur ipsum neque nec quam. Vestibulum id dolor eget ante ornare mollis. Duis placerat risus maximus turpis placerat egestas. Fusce semper in neque ac sodales. Mauris non elementum nulla. Quisque imperdiet fringilla luctus. Aenean ac ante felis. Mauris vehicula in est e</p>
             
                 <form class="form-inline col-md-10 col-md-offset-1">
-                     <div class="form-group" style="width: 100%;"> 
+                     <div class="form-group" style="width: 100%; margin-top: 50px;"> 
                         <input type="text" class="form-control search-bar" placeholder="Find your nearest dojo">
                         <button type="submit" class="btn btn-default">Search</button>
                      </div> 
