@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'CMW',
                 'address' => 'asdasd',
+                'url' => 'http://www.cocksmoorsaikido.co.uk/',
                 'info' => json_encode([
                     'info' => 'test'
                 ]),
@@ -46,6 +47,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'todor grange',
                 'address' => 'asdasd',
+                'url' => 'http://www.tudorgrangeaikido.co.uk/Pages/default.aspx',
                 'info' => json_encode([
                     'info' => 'test'
                 ]),
