@@ -48,7 +48,9 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/dojos') }}">Dojos</a></li>
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/about-aikido') }}">About Aikido</a></li>
+                    <li><a href="{{ url('/calendar') }}">Calendar</a></li>
+                    <!-- <li><a href="{{ url('/home') }}">Home</a></li> -->
                 </ul>
 
                 <!-- Right Side Of Navbar -->
