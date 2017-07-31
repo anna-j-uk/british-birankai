@@ -16,7 +16,6 @@ class CreateDojosTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('name');
-            $table->string('address');
             $table->string('url');
             $table->json('info');
             $table->integer('teacher_id');
