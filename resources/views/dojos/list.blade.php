@@ -9,7 +9,18 @@
 
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            le dojo <a href="./dojos/{{ $dojo->id }}"> {{ $dojo->name }} </a>
+                            <a href="./dojos/{{ $dojo->id }}">
+                                <h3> {{ $dojo->name }} </h3>
+                            </a>
+                            <p> <i> {{ $dojo->info['shortDescription'] }} </i> </p>
+                            <dl class="dl-horizontal">
+                                <dt> Classes </dt>
+                                <dd> {{ $dojo->info['classes'] }} </dd>
+                                <dt> Address </dt>
+                                <dd> {{ $dojo->info['address'] }} </dd>
+                                <dt> Website </dt>
+                                <dd> <a href="{{ $dojo->url }}" target="_blank"> {{ $dojo->url }} </a> </dd>
+                            </dl>
                         </div>
                     </div>
 
