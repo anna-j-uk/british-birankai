@@ -14,6 +14,8 @@
                             </a>
                             <p> <i> {{ $dojo->info['shortDescription'] }} </i> </p>
                             <dl class="dl-horizontal">
+                                <dt> Teacher </dt>
+                                <dd> {{ $dojo->teacher->name }} </dd>
                                 <dt> Classes </dt>
                                 <dd> {{ $dojo->info['classes'] }} </dd>
                                 <dt> Address </dt>

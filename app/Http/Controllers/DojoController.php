@@ -12,6 +12,9 @@ class DojoController extends Controller
     public function index()
     {
         $dojos = Dojo::all();
+        foreach ($dojos as $dojo) {
+            $dojo->teacher;
+        }
         return view('dojos.list', compact('dojos'));
     }
 
