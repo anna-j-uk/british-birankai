@@ -19,8 +19,8 @@ class CreateDojosTable extends Migration
             $table->string('url');
             $table->json('info');
             $table->integer('teacher_id');
-            $table->decimal('latitude');
-            $table->decimal('longitude');
+            $table->double('latitude');
+            $table->double('longitude');
         });
     }
 

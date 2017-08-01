@@ -43,8 +43,8 @@ class DatabaseSeeder extends Seeder
                     'info' => 'test'
                 ]),
                 'teacher_id' => 2,
-                'latitude' => 52.417506,
-                'longitude' => -1.8970728
+                'latitude' => 52.417414,
+                'longitude' => -1.888410
             ],
             [
                 'name' => 'Tudor Grange',

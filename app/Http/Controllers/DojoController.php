@@ -20,6 +20,7 @@ class DojoController extends Controller
 
     public function show(Dojo $dojo)
     {
+        $dojo->teacher;
         return view('dojos.details', compact('dojo'));
     }
 }
