@@ -40,7 +40,34 @@ class DatabaseSeeder extends Seeder
                     'address' => 'Cocksmoor Woods Leisure Centre, Alcester Rd South, Birmingham, West Midlands B14 6ER',
                     'shortDescription' => 'Short description for CMW... mus tristique eleifend lorem, nec pulvinar lacus lobortis non. Duis id justo tellus. Donec ultrices enim sit amet libero tempus, vel fringilla urna fringilla. Nulla a quam',
                     'classes' => 'Wed, Thur',
-                    'info' => 'test'
+                    'info' => 'test',
+                    'timetable' => [
+                        [
+                            'day' => 'Wednesday',
+                            'times' => [
+                                [
+                                    'time' => '19:30 - 20:30',
+                                    'age' => 'Juniors',
+                                    'class' => 'General Aikido'
+                                ],
+                                [
+                                    'time' => '19:30 - 20:30',
+                                    'age' => 'Adults',
+                                    'class' => 'General Aikido'
+                                ]
+                            ]
+                        ],
+                        [
+                            'day' => 'Thursday',
+                            'times' => [
+                                [
+                                    'time' => '19:15 - 20:30',
+                                    'age' => 'Adults',
+                                    'class' => 'General Aikido'
+                                ]
+                            ]
+                        ]
+                    ]
                 ]),
                 'teacher_id' => 2,
                 'latitude' => 52.417414,
@@ -53,11 +80,23 @@ class DatabaseSeeder extends Seeder
                     'address' => 'Tudor Grange Sports Centre, Tudor Grange Park, Blossomfield Road, Solihull, Birmingham B91 1NB',
                     'shortDescription' => 'Short description for Tudor Grange... Sed interdum fringilla iaculis. Suspendisse commodo eros id risus iaculis, sed fermentum purus consequat. Duis sit amet elementum nunc. Pellentesque sed mi dui. Morbi tincidunt accumsan augue, n',
                     'classes' => 'Mon',
-                    'info' => 'test'
+                    'info' => 'test',
+                    'timetable' => [
+                        [
+                            'day' => 'Monday',
+                            'times' => [
+                                [
+                                    'time' => '19:15 - 20:30',
+                                    'age' => 'Adults',
+                                    'class' => 'General Aikido'
+                                ]
+                            ]
+                        ]
+                    ]
                 ]),
                 'teacher_id' => 3,
-                'latitude' => 52.417506,
-                'longitude' => -1.8970728
+                'latitude' => 52.412555,
+                'longitude' => -1.7899997
             ]
         ]);
     }
