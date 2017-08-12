@@ -13,65 +13,63 @@
 
             <div class="row">
 
-                <div class="col-sm-4">
-                
-                    <div class="thumbnail same-height">
-                        <img src="../../images/shared/user-image-with-black-background_318-34564.jpg">
-                        <div class="caption">
-                            <h3>{{ $dojo->teacher->name }}</h3>
-                            <p> estibulum tempus urna sed ipsum laoreet, at imperdiet nisl imperdiet.  </p>
-                        </div>
+            <div class="card-group">
+
+                <div class="card">
+                    <img class="card-img-top" src="../../images/shared/user-image-with-black-background_318-34564.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ $dojo->teacher->name }}</h4>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                     </div>
-                
                 </div>
 
-                <div class="col-sm-4">
-                    <div id="dojo-map" class="same-height"></div>
+                <div class="card">
+                    <div id="dojo-map" style="height: 100%; min-height: 500px"></div>
                 </div>
 
-                <div class="col-sm-4 same-height">
-                    <div class="caption">
-                        <h3>Timetable</h3>
-                    </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Timetable</h4>
+                        @foreach($dojo->info['timetable'] as $timetable)
+                            <h4> {{ $timetable['day'] }} </h4>
 
-                    @foreach($dojo->info['timetable'] as $timetable)
-                        <h4> {{ $timetable['day'] }} </h4>
-
-                        <table class="table table-hover table-bordered">
-                            <tbody>
-                                <tr>
-                                    <th>Time</th>
-                                    <th>Age</th>
-                                    <th>Class</th>
-                                </tr>
-
-                                @foreach($timetable['times'] as $times)
+                            <table class="table table-hover table-bordered">
+                                <tbody>
                                     <tr>
-                                        <td> {{ $times['time'] }} </td>
-                                        <td> {{ $times['age'] }} </td>
-                                        <td> {{ $times['class'] }} </td>
+                                        <th>Time</th>
+                                        <th>Age</th>
+                                        <th>Class</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    @endforeach
+
+                                    @foreach($timetable['times'] as $times)
+                                        <tr>
+                                            <td> {{ $times['time'] }} </td>
+                                            <td> {{ $times['age'] }} </td>
+                                            <td> {{ $times['class'] }} </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endforeach
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card border-danger mt-3">
+                <div class="card-body text-danger">
+                    <h4 class="card-title">Some kind of notice!!</h4>
+                    <p class="card-text"> Classes are cancelled on days: x, y, z... </p>
                 </div>
             </div>
 
-            <div class="panel panel-danger">
-                <div class="panel-heading">Some kind of notice!!</div>
-                <div class="panel-body">
-                    Classes are cancelled on days: x, y, z...
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <h3>Extra information</h3>
-                    <p>
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h4 class="card-title">Extra information</h4>
+                    <p class="card-text">
                         Aenean sollicitudin consectetur laoreet. Aenean posuere, mauris vitae accumsan mattis, elit libero bibendum neque, vitae elementum purus risus in ante. Aenean quis ex eget augue tristique venenatis. Vivamus non consectetur felis, ornare pharetra erat. In et facilisis enim. Fusce libero leo, pharetra sed lacus in, euismod aliquet metus. Aenean faucibus accumsan vestibulum. Suspendisse potenti. Proin convallis condimentum risus, id mattis neque pellentesque rutrum. Donec pulvinar quis sem non facilisis.
                     </p>
-                <div>
+                </div>
             </div>
 
         </div>
@@ -80,11 +78,8 @@
 @endsection
 
 @section('javascript')
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
-<script>
-    
-    $(function() {
-        (function() {
+    <script>
+        function initMap() {
             var dojo = {lat: {{ $dojo->latitude }}, lng: {{ $dojo->longitude }} };
             var map = new google.maps.Map(document.getElementById('dojo-map'), {
                 zoom: 15,
@@ -94,8 +89,10 @@
                 position: dojo,
                 map: map
             });
-        })();
-        $('.same-height').matchHeight();
-    });
-</script>
+        }
+    </script>
+
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-IXHcGiNJ9fxySxDgyz3VqzjFnRLchFM&callback=initMap">
+    </script>
 @endsection

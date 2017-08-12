@@ -7,12 +7,12 @@
 
                 @foreach ($dojos as $dojo)
 
-                    <div class="panel panel-default">
-                        <div class="panel-body">
+                    <div class="card my-3">
+                        <div class="card-body">
                             <a href="./dojos/{{ $dojo->id }}">
-                                <h3> {{ $dojo->name }} </h3>
+                                <h3 class="card-title"> {{ $dojo->name }} </h3>
                             </a>
-                            <p> <i> {{ $dojo->info['shortDescription'] }} </i> </p>
+                            <p class="card-text"> <i> {{ $dojo->info['shortDescription'] }} </i> </p>
                             <dl class="dl-horizontal">
                                 <dt> Teacher </dt>
                                 <dd> {{ $dojo->teacher->name }} </dd>
@@ -20,9 +20,9 @@
                                 <dd> {{ $dojo->info['classes'] }} </dd>
                                 <dt> Address </dt>
                                 <dd> {{ $dojo->info['address'] }} </dd>
-                                <dt> Website </dt>
-                                <dd> <a href="{{ $dojo->url }}" target="_blank"> {{ $dojo->url }} </a> </dd>
                             </dl>
+
+                            <a class="btn btn-primary" href="{{ $dojo->url }}" target="_blank"> Website </a>
                         </div>
                     </div>
 

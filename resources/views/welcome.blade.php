@@ -5,7 +5,6 @@
     <style>
 
         .index-container{
-            margin-top: -20px;
             background-color: black;   
             position: relative;         
         }
