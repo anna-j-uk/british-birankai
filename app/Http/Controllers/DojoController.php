@@ -23,4 +23,15 @@ class DojoController extends Controller
         $dojo->teacher;
         return view('dojos.details', compact('dojo'));
     }
+
+    public function edit($id)
+    {
+        if ($id === 'new') {
+            $dojo = new Dojo();
+        } else {
+            $dojo = Dojo::find($id);
+        }
+
+        return view('dojos.edit', compact('dojo'));
+    }
 }
