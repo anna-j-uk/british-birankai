@@ -56,14 +56,14 @@
 
             </div>
 
-            <div class="card border-danger mt-3">
+            <div class="card border-danger mt-3 w-100">
                 <div class="card-body text-danger">
                     <h4 class="card-title">Some kind of notice!!</h4>
                     <p class="card-text"> Classes are cancelled on days: x, y, z... </p>
                 </div>
             </div>
 
-            <div class="card mt-3">
+            <div class="card mt-3 w-100">
                 <div class="card-body">
                     <h4 class="card-title">Extra information</h4>
                     <p class="card-text">
