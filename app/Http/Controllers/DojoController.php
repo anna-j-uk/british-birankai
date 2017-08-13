@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Dojo;
+use App\User;
 
 class DojoController extends Controller
 {
@@ -26,12 +27,14 @@ class DojoController extends Controller
 
     public function edit($id)
     {
+        $users = User::all();
+
         if ($id === 'new') {
             $dojo = new Dojo();
         } else {
             $dojo = Dojo::find($id);
         }
 
-        return view('dojos.edit', compact('dojo'));
+        return view('dojos.edit', compact('dojo', 'users'));
     }
 }
