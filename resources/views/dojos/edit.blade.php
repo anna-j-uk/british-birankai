@@ -32,6 +32,14 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="website">Website URL</label>
+                    <input type="text" class="form-control" id="website" placeholder="Enter name" value="{{ $dojo->url }}">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="http://" value="{{ $dojo->info['address'] }}">
+                </div>
                 <div class="form-row">
                     <div class="col">
                     <label>Latitude</label>
@@ -190,17 +198,22 @@
         };
 
         function getFormValues() {
-            var values;
+            var values,
+                dayNames;
             values = {
+                id: dojo.id,
                 name: $('#name').val(),
+                url: $('#website').val(),
                 teacher_id: $('#teacher option:selected').data('id'),
                 latitude: $('#latitude').val(),
                 longitude: $('#longitude').val(),
                 info: {
                     shortDescription: $('#description').val(),
+                    address: $('#address').val(),
                     timetable: []
                 }
-            }
+            };
+            dayNames = [];
             $('.day').each(function(index, el) {
                 var $el = $(el);
                 var day = {
@@ -217,7 +230,9 @@
                     day.times.push(time);
                 });
                 values.info.timetable.push(day);
-            })
+                dayNames.push(day.day);
+            });
+            values.info.classes = dayNames.join(', ');
             return values;
         };
 
@@ -236,7 +251,7 @@
                 },
                 url: "../../dojos",
                 method: method,
-                data: JSON.stringify(values)
+                data: values
             });
             console.log(values)
         };

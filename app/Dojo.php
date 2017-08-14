@@ -7,6 +7,8 @@ use App\User;
 
 class Dojo extends Model
 {
+    protected $guarded = ['id'];
+
     protected $casts = [
         'info' => 'array'
     ];

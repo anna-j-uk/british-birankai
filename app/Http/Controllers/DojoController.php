@@ -37,4 +37,14 @@ class DojoController extends Controller
 
         return view('dojos.edit', compact('dojo', 'users'));
     }
+
+    public function update(Request $request)
+    {
+        $data = $request->all();
+        $dojo = Dojo::find($data['id']);
+        unset($data['id']);
+        $dojo->fill($data);
+        $dojo->save();
+        return $dojo;
+    }
 }
