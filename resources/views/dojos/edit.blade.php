@@ -8,7 +8,7 @@
             @if ($dojo->id)
                 <h1>Edit "{{ $dojo->name }}"</h1>
             @else
-                <h1>Add New Dojo</h1>            
+                <h1>Add New Dojo</h1>
             @endif
             <form>
                 <div class="form-group">
@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="form-group col-md-2">
                                     <button class="add-time btn btn-secondary" type="button">Add time</button>
-                                </div>                
+                                </div>
                             </div>
                             <div class="times">
                                 @foreach($timetable['times'] as $times)
@@ -132,7 +132,7 @@
                 </div>
                 <div class="form-group col-md-2">
                     <button class="add-time btn btn-secondary" type="button">Add time</button>
-                </div>                
+                </div>
             </div>
             <div class="times"></div>
             <button class="remove-day btn btn-secondary" type="button">Remove Day</button>
@@ -252,8 +252,11 @@
                 url: "../../dojos",
                 method: method,
                 data: values
+            }).done(function (data) {
+                window.location.href = data.id;
+            }).fail(function () {
+                alert('Something went wrong.')
             });
-            console.log(values)
         };
 
         $(function () {

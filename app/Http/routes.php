@@ -24,6 +24,7 @@ Route::get('/calendar', 'CalendarController@index');
 Route::group([ 'prefix' => 'dojos'], function () {
     Route::get('/', 'DojoController@index');
     Route::put('/', 'DojoController@update');
+    Route::post('/', 'DojoController@create');
     Route::get('/{dojo}', 'DojoController@show');
     Route::get('/edit/{dojo}', 'DojoController@edit');
 });

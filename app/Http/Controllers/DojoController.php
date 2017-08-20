@@ -12,7 +12,7 @@ class DojoController extends Controller
 {
     public function index()
     {
-        $dojos = Dojo::all();
+        $dojos = Dojo::orderBy('name', 'asc')->get();
         foreach ($dojos as $dojo) {
             $dojo->teacher;
         }
@@ -42,6 +42,16 @@ class DojoController extends Controller
     {
         $data = $request->all();
         $dojo = Dojo::find($data['id']);
+        unset($data['id']);
+        $dojo->fill($data);
+        $dojo->save();
+        return $dojo;
+    }
+
+    public function create(Request $request)
+    {
+        $data = $request->all();
+        $dojo = new Dojo;
         unset($data['id']);
         $dojo->fill($data);
         $dojo->save();
