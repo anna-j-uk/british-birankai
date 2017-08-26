@@ -17,18 +17,21 @@ class DatabaseSeeder extends Seeder
                 'name' => 'anna',
                 'email' => 'me@me.com',
                 'password' => bcrypt('asd'),
+                'isAdmin' => 1
             ],
             [
                 'id' => 2,
                 'name' => 'sensei mark',
                 'email' => 'asd1@asd.com',
                 'password' => bcrypt('asd'),
+                'isAdmin' => 1
             ],
             [
                 'id' => 3,
                 'name' => 'sensei stu',
                 'email' => 'asd2@asd.com',
                 'password' => bcrypt('asd'),
+                'isAdmin' => 1
             ]
         ]);
 

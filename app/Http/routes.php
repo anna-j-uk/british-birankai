@@ -20,6 +20,9 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::get('/about-aikido', 'AboutAikidoController@index');
 Route::get('/calendar', 'CalendarController@index');
+Route::get('/my-profile', 'UserProfile@index');
+Route::post('/admin/{user}', 'UserProfile@addAdmin');
+Route::delete('/admin/{user}', 'UserProfile@removeAdmin');
 
 Route::group([ 'prefix' => 'dojos'], function () {
     Route::get('/', 'DojoController@index');
