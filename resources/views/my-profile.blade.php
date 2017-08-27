@@ -32,7 +32,7 @@
                         <lable>Email</lable>
                         <input class="form-control" type="text" placeholder="test" value="{{ $user->email }}">
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <lable>Current Password</lable>
                         <input class="form-control" type="text" placeholder="test">
                     </div>
@@ -40,7 +40,7 @@
                         <lable>New Password</lable>
                         <input class="form-control" type="text" placeholder="test">
                         <input class="form-control" type="text" placeholder="test">
-                    </div>
+                    </div> -->
 
                     <button id="submit" type="button" class="btn btn-primary float-right">Submit</button>
                 </form>
