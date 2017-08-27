@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/about-aikido', 'AboutAikidoController@index');
 Route::get('/calendar', 'CalendarController@index');
 Route::get('/my-profile', 'UserProfile@index')->middleware('auth');
+Route::put('/my-profile/{user}', 'UserProfile@updateUser')->middleware('auth');
 Route::post('/admin/{user}', 'UserProfile@addAdmin')->middleware('admin');;
 Route::delete('/admin/{user}', 'UserProfile@removeAdmin')->middleware('admin');;
 

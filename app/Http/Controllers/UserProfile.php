@@ -18,6 +18,16 @@ class UserProfile extends Controller
         return view('my-profile', compact('user', 'admins', 'normies'));
     }
 
+    public function updateUser(Request $request, User $user)
+    {
+        if (Auth::user()->id === $user->id) {
+            $user->fill($request->all());
+            $user->save();
+            return $user;
+        }
+        return response('Unauthorized.', 401);
+    }
+
     public function addAdmin(User $user)
     {
         $currentUser = Auth::user();

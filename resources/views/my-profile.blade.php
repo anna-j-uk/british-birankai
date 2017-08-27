@@ -12,12 +12,9 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
-                    <img class="card-img-top" src="../../images/shared/user-image-with-black-background_318-34564.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <label class="custom-file">
-                            <input type="file" id="file2" class="custom-file-input">
-                            <span class="custom-file-control"></span>
-                        </label>
+                    <img class="card-img-top" src="{{ $user->getAvatarUrl() }}" alt="Card image cap">
+                    <div class="form-group m-3">
+                        <input type="url" id="avatar-url" class="form-control" placeholder="Avatar url">
                     </div>
                 </div>
             </div>
@@ -25,24 +22,28 @@
             <div class="col-md-8">
                 <form action="">
                     <div class="form-group">
-                        <lable>Name</lable>
-                        <input class="form-control" type="text" placeholder="test" value="{{ $user->name }}">
+                        <lable for="user-name">Name</lable>
+                        <input id="user-name" class="form-control" type="text" value="{{ $user->name }}">
                     </div>
                     <div class="form-group">
-                        <lable>Email</lable>
-                        <input class="form-control" type="text" placeholder="test" value="{{ $user->email }}">
+                        <label for="description">About me</label>
+                        <textarea class="form-control" id="description" rows="3" >{{ $user->getDescription() }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <lable for="user-email">Email</lable>
+                        <input id="user-email" class="form-control" type="text" value="{{ $user->email }}">
                     </div>
                     <!-- <div class="form-group">
                         <lable>Current Password</lable>
-                        <input class="form-control" type="text" placeholder="test">
+                        <input class="form-control" type="text">
                     </div>
                     <div class="form-group">
                         <lable>New Password</lable>
-                        <input class="form-control" type="text" placeholder="test">
-                        <input class="form-control" type="text" placeholder="test">
+                        <input class="form-control" type="text">
+                        <input class="form-control" type="text">
                     </div> -->
 
-                    <button id="submit" type="button" class="btn btn-primary float-right">Submit</button>
+                    <button id="update-user" type="button" class="btn btn-primary float-right">Submit</button>
                 </form>
 
             </div>
@@ -101,14 +102,36 @@
                     </table>
                 </div>
             </div>
-        </div>
-    @endif
+        @endif
+
+    </div>
 
 @endsection
 
 @section('javascript')
     <script>
         'use strict';
+        var user = JSON.parse('{!! json_encode($user) !!}');
+
+        function onUserSubmit() {
+            var avatarUrl = $('#avatar-url').val() || user.info.avatarUrl;
+            var data = {
+                name: $('#user-name').val(),
+                email: $('#user-email').val(),
+                info: {
+                    userDescription: $('#description').val()
+                }
+            };
+            if (avatarUrl) {
+                data.info.avatarUrl = avatarUrl;
+            }
+            console.log(data)
+            sendAjaxRequest(
+                'PUT',
+                '/my-profile/' + user.id,
+                data
+            );
+        };
 
         function onAdminSubmitClick(e) {
             e.preventDefault();
@@ -148,6 +171,7 @@
         }
 
         $(function () {
+            $('#update-user').click(onUserSubmit);
             $('#admin-submit').click(onAdminSubmitClick);
             $('.admin-remove').click(onAdminRemoveClick);
         });
