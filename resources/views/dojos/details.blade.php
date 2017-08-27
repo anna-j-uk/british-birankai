@@ -22,10 +22,10 @@
             <div class="card-group">
 
                 <div class="card">
-                    <img class="card-img-top" src="../../images/shared/user-image-with-black-background_318-34564.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="{{ $dojo->teacher->getAvatarUrl() }}" alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title">{{ $dojo->teacher->name }}</h4>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">{{ $dojo->teacher->getDescription() }}</p>
                     </div>
                 </div>
 
