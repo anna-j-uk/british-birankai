@@ -21,13 +21,13 @@ Route::get('/home', 'HomeController@index');
 Route::get('/about-aikido', 'AboutAikidoController@index');
 Route::get('/calendar', 'CalendarController@index');
 Route::get('/my-profile', 'UserProfile@index')->middleware('auth');
-Route::post('/admin/{user}', 'UserProfile@addAdmin');
-Route::delete('/admin/{user}', 'UserProfile@removeAdmin');
+Route::post('/admin/{user}', 'UserProfile@addAdmin')->middleware('admin');;
+Route::delete('/admin/{user}', 'UserProfile@removeAdmin')->middleware('admin');;
 
 Route::group([ 'prefix' => 'dojos'], function () {
     Route::get('/', 'DojoController@index');
-    Route::put('/', 'DojoController@update');
-    Route::post('/', 'DojoController@create');
+    Route::put('/', 'DojoController@update')->middleware('admin');;
+    Route::post('/', 'DojoController@create')->middleware('admin');;
     Route::get('/{dojo}', 'DojoController@show');
-    Route::get('/edit/{dojo}', 'DojoController@edit');
+    Route::get('/edit/{dojo}', 'DojoController@edit')->middleware('admin');
 });

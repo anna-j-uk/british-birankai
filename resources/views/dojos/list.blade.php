@@ -5,9 +5,11 @@
     <div class="row">
         <div class="col-md-10 mx-auto">
 
+            @if (Auth::check() && Auth::user()->isAdmin)
             <div class="clearfix mt-3">
                 <a class="btn btn-primary float-right " href="./dojos/edit/new" role="button">Add Dojo</a>
             </div>
+            @endif
 
             @foreach ($dojos as $dojo)
 

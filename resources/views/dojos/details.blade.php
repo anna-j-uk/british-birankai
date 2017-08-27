@@ -5,9 +5,11 @@
     <div class="row">
         <div class="col-md-12">
 
+            @if (Auth::check() && Auth::user()->isAdmin)
             <div class="clearfix mt-3">
                 <a class="btn btn-primary float-right " href="./edit/{{ $dojo->id }}" role="button">Edit Dojo</a>
             </div>
+            @endif
 
             <div class="page-header">
                 <h1>{{ $dojo->name }}</h1>
