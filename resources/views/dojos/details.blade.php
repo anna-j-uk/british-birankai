@@ -62,21 +62,22 @@
 
             </div>
 
-            <div class="card border-danger mt-3 w-100">
-                <div class="card-body text-danger">
-                    <h4 class="card-title">Some kind of notice!!</h4>
-                    <p class="card-text"> Classes are cancelled on days: x, y, z... </p>
+            @if (isset($dojo->info['notice']))
+                <div class="card border-danger mt-3 w-100">
+                    <div class="card-body text-danger">
+                        <p class="card-text"> {{ $dojo->info['notice'] }} </p>
+                    </div>
                 </div>
-            </div>
+            @endif
 
-            <div class="card mt-3 w-100">
+            <!-- <div class="card mt-3 w-100">
                 <div class="card-body">
                     <h4 class="card-title">Extra information</h4>
                     <p class="card-text">
                         Aenean sollicitudin consectetur laoreet. Aenean posuere, mauris vitae accumsan mattis, elit libero bibendum neque, vitae elementum purus risus in ante. Aenean quis ex eget augue tristique venenatis. Vivamus non consectetur felis, ornare pharetra erat. In et facilisis enim. Fusce libero leo, pharetra sed lacus in, euismod aliquet metus. Aenean faucibus accumsan vestibulum. Suspendisse potenti. Proin convallis condimentum risus, id mattis neque pellentesque rutrum. Donec pulvinar quis sem non facilisis.
                     </p>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>

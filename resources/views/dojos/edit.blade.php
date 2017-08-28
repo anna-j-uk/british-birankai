@@ -63,16 +63,23 @@
 
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input id="notice" class="form-check-input" type="checkbox" value="">
+                        <input id="notice" class="form-check-input" type="checkbox"
+                            @if (isset($dojo->info['notice']))
+                            checked
+                            @endif
+                        >
                         Show notice
                     </label>
                 </div>
-                <div class="form-check">
+                <div class="form-group">
+                    <textarea class="form-control" id="notice-text" rows="3" >@if (isset($dojo->info['notice'])) {{ $dojo->info['notice'] }} @endif</textarea>
+                </div>
+                <!-- <div class="form-check">
                     <label class="form-check-label">
                         <input id="extra-information" class="form-check-input" type="checkbox" value="">
                         Show extra information
                     </label>
-                </div>
+                </div> -->
 
                 <h3> Timetable </h3>
                 <button id="add-day" type="button" class="btn btn-secondary"> Add Day </button>
@@ -165,6 +172,18 @@
         var info = dojo.info;
         var timetable = info.timetable;
 
+        function onNoticeClick() {
+            toggleNoticeDisplay();
+        };
+
+        function toggleNoticeDisplay() {
+            if ($('#notice').is(':checked')) {
+                $('#notice-text').show();
+            } else {
+                $('#notice-text').hide();
+            }
+        }
+
         function createJqueryElement(selector) {
             return $.parseHTML($(selector).html());
         };
@@ -233,6 +252,9 @@
                 dayNames.push(day.day);
             });
             values.info.classes = dayNames.join(', ');
+            if ($('#notice').is(':checked')) {
+                values.info.notice = $('#notice-text').val();
+            }
             return values;
         };
 
@@ -260,6 +282,8 @@
         };
 
         $(function () {
+            toggleNoticeDisplay();
+            $('#notice').click(onNoticeClick);
             $('#add-day').click(onAddDayClick);
             $('#submit').click(onSubmit);
             setupListeners();
