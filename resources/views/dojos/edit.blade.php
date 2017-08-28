@@ -61,6 +61,7 @@
                     </div>
                 </div> <!-- end form-row -->
 
+                <!-- Notice -->
                 <div class="form-check">
                     <label class="form-check-label">
                         <input id="notice" class="form-check-input" type="checkbox"
@@ -74,13 +75,23 @@
                 <div class="form-group">
                     <textarea class="form-control" id="notice-text" rows="3" >@if (isset($dojo->info['notice'])) {{ $dojo->info['notice'] }} @endif</textarea>
                 </div>
-                <!-- <div class="form-check">
+
+                <!-- Show extra information -->
+                <div class="form-check">
                     <label class="form-check-label">
-                        <input id="extra-information" class="form-check-input" type="checkbox" value="">
+                        <input id="extra-information" class="form-check-input" type="checkbox"
+                            @if (isset($dojo->info['extraInformation']))
+                            checked
+                            @endif
+                        >
                         Show extra information
                     </label>
-                </div> -->
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" id="extra-information-text" rows="3" >@if (isset($dojo->info['extraInformation'])) {{ $dojo->info['extraInformation'] }} @endif</textarea>
+                </div>
 
+                <!-- timetable -->
                 <h3> Timetable </h3>
                 <button id="add-day" type="button" class="btn btn-secondary"> Add Day </button>
                 <div id="timetable">
@@ -171,9 +182,7 @@
     <script>
         'use strict';
 
-        var dojo = JSON.parse('{!! json_encode($dojo) !!}');
-        var info = dojo.info;
-        var timetable = info.timetable;
+        var dojoId = {{ $dojo->id}};
 
         function onNoticeClick() {
             toggleNoticeDisplay();
@@ -203,8 +212,18 @@
         }
 
         function hideTextEditor(selector) {
-            tinymce.get(selector).destroy();
+            if (tinymce.get(selector)) {
+                tinymce.get(selector).destroy();
+            }
             $('#' + selector).hide();
+        }
+
+        function toggleExtraInformationDisplay() {
+            if ($('#extra-information').is(':checked')) {
+                showTextEditor('extra-information-text');
+            } else {
+                hideTextEditor('extra-information-text');
+            }
         }
 
         function createJqueryElement(selector) {
@@ -243,7 +262,7 @@
             var values,
                 dayNames;
             values = {
-                id: dojo.id,
+                id: dojoId,
                 name: $('#name').val(),
                 url: $('#website').val(),
                 teacher_id: $('#teacher option:selected').data('id'),
@@ -278,6 +297,9 @@
             if ($('#notice').is(':checked')) {
                 values.info.notice = tinymce.get('notice-text').getContent();
             }
+            if ($('#extra-information').is(':checked')) {
+                values.info.extraInformation = tinymce.get('extra-information-text').getContent();
+            }
             return values;
         };
 
@@ -285,7 +307,7 @@
             var values,
                 method;
             values = getFormValues();
-            if (dojo.id) {
+            if (dojoId) {
                 method = 'PUT';
             } else {
                 method = 'POST';
@@ -306,7 +328,9 @@
 
         $(function () {
             toggleNoticeDisplay();
+            toggleExtraInformationDisplay();
             $('#notice').click(onNoticeClick);
+            $('#extra-information').click(toggleExtraInformationDisplay);
             $('#add-day').click(onAddDayClick);
             $('#submit').click(onSubmit);
             setupListeners();
