@@ -50,6 +50,8 @@ class DatabaseSeeder extends Seeder
                     'shortDescription' => 'Short description for CMW... mus tristique eleifend lorem, nec pulvinar lacus lobortis non. Duis id justo tellus. Donec ultrices enim sit amet libero tempus, vel fringilla urna fringilla. Nulla a quam',
                     'classes' => 'Wed, Thur',
                     'info' => 'test',
+                    "notice"=> "<p>something important</p>",
+                    "extraInformation"=> "<h2>something else</h2>\n<p>&nbsp;</p>\n<p>test test</p>",
                     'timetable' => [
                         [
                             'day' => 'Wednesday',
@@ -107,6 +109,49 @@ class DatabaseSeeder extends Seeder
                 'latitude' => 52.412555,
                 'longitude' => -1.7899997
             ]
+        ]);
+
+        DB::table('chatter_categories')->insert([
+            0 => [
+                'id'         => 1,
+                'parent_id'  => null,
+                'order'      => 1,
+                'name'       => 'Introductions',
+                'color'      => '#3498DB',
+                'slug'       => 'introductions',
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            1 => [
+                'id'         => 2,
+                'parent_id'  => null,
+                'order'      => 2,
+                'name'       => 'General',
+                'color'      => '#2ECC71',
+                'slug'       => 'general',
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            2 => [
+                'id'         => 3,
+                'parent_id'  => null,
+                'order'      => 3,
+                'name'       => 'Feedback',
+                'color'      => '#9B59B6',
+                'slug'       => 'feedback',
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            3 => [
+                'id'         => 4,
+                'parent_id'  => null,
+                'order'      => 4,
+                'name'       => 'Random',
+                'color'      => '#E67E22',
+                'slug'       => 'random',
+                'created_at' => null,
+                'updated_at' => null,
+            ],
         ]);
     }
 }
