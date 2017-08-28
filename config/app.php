@@ -156,6 +156,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Forum
+         */
+         DevDojo\Chatter\ChatterServiceProvider::class,
     ],
 
     /*

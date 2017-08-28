@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
+    @yield('css')
+
     <style>
         body {
             font-family: 'Lato';
@@ -42,6 +44,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{ url('/dojos') }}">Dojos</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('/about-aikido') }}">About Aikido</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('/calendar') }}">Calendar</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/forums') }}">Forums</a></li>
                 <!-- <li class="nav-item"><a class="nav-link" href="{{ url('/home') }}">Home</a></li> -->
             </ul>
 
@@ -76,5 +79,6 @@
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     @yield('javascript')
 
+    @yield('js')
 </body>
 </html>
