@@ -123,7 +123,7 @@
                 }
             };
             if (avatarUrl) {
-                data.info.avatarUrl = avatarUrl;
+                data.avatar = avatarUrl;
             }
             console.log(data)
             sendAjaxRequest(

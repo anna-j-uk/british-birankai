@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 1,
                 'name' => 'anna',
+                'avatar' => 'https://scontent-lht6-1.xx.fbcdn.net/v/t1.0-9/20604474_1539513789439026_4513123840569631365_n.jpg?oh=b13f61c31a00991a84b5e97576c30bb6&oe=5A30E27F',
                 'email' => 'me@me.com',
                 'password' => bcrypt('asd'),
                 'isAdmin' => 1,
@@ -23,6 +24,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 2,
                 'name' => 'sensei mark',
+                'avatar' => 'https://scontent-lht6-1.xx.fbcdn.net/v/t1.0-9/14590380_10209721667251979_5154116300470702867_n.jpg?oh=0ea007e97793fb2773d342d16ec3ead0&oe=5A2623AE',
                 'email' => 'asd1@asd.com',
                 'password' => bcrypt('asd'),
                 'isAdmin' => 1,
@@ -31,6 +33,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 3,
                 'name' => 'sensei stu',
+                'avatar' => '',
                 'email' => 'asd2@asd.com',
                 'password' => bcrypt('asd'),
                 'isAdmin' => 1,

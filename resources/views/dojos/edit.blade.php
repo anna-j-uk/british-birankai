@@ -95,6 +95,7 @@
                 <h3> Timetable </h3>
                 <button id="add-day" type="button" class="btn btn-secondary"> Add Day </button>
                 <div id="timetable">
+                    @if(isset($dojo->info['timetable']))
                     @foreach($dojo->info['timetable'] as $timetable)
                         <div class="day">
                             <div class="form-row">
@@ -107,6 +108,7 @@
                                 </div>
                             </div>
                             <div class="times">
+                                @if (isset($timetable['times']))
                                 @foreach($timetable['times'] as $times)
                                     <div class="time-row form-row">
                                         <div class="col">
@@ -126,10 +128,12 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                @endif
                             </div>
                             <button class="remove-day btn btn-secondary" type="button">Remove Day</button>
                         </div>
                         @endforeach
+                        @endif
                 </div>
 
                 <button id="submit" type="button" class="btn btn-primary mt-4">Submit</button>
@@ -181,8 +185,9 @@
 
     <script>
         'use strict';
+        var dojoId;
 
-        var dojoId = {{ $dojo->id}};
+        @if ($dojo->id) dojoId = {{ $dojo->id}}; @endif
 
         function onNoticeClick() {
             toggleNoticeDisplay();
@@ -262,7 +267,7 @@
             var values,
                 dayNames;
             values = {
-                id: dojoId,
+                id: dojoId || 0,
                 name: $('#name').val(),
                 url: $('#website').val(),
                 teacher_id: $('#teacher option:selected').data('id'),

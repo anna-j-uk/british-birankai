@@ -36,6 +36,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Timetable</h4>
+                        @if(isset($dojo->info['timetable']))
                         @foreach($dojo->info['timetable'] as $timetable)
                             <h4> {{ $timetable['day'] }} </h4>
 
@@ -47,6 +48,7 @@
                                         <th>Class</th>
                                     </tr>
 
+                                    @if (isset($timetable['times']))
                                     @foreach($timetable['times'] as $times)
                                         <tr>
                                             <td> {{ $times['time'] }} </td>
@@ -54,9 +56,11 @@
                                             <td> {{ $times['class'] }} </td>
                                         </tr>
                                     @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         @endforeach
+                        @endif
                     </div>
                 </div>
 

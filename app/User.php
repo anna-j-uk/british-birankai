@@ -14,7 +14,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'info',
+        'name', 'email', 'password', 'info', 'avatar'
     ];
 
     /**
@@ -43,8 +43,8 @@ class User extends Authenticatable
 
     public function getAvatarUrl()
     {
-        if (isset($this->getInfo()['avatarUrl'])) {
-            return $this->getInfo()['avatarUrl'];
+        if ($this->attributes['avatar']) {
+            return $this->attributes['avatar'];
         }
         return "../../images/shared/user-image-with-black-background_318-34564.jpg";
     }
