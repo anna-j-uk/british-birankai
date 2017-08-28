@@ -130,6 +130,9 @@
 @endsection
 
 @section('javascript')
+    <script src="/vendor/devdojo/chatter/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="/vendor/devdojo/chatter/assets/js/tinymce.js"></script>
+
     <script type="text/template" id="add-day-template">
         <div class="day">
             <div class="form-row">
@@ -178,10 +181,30 @@
 
         function toggleNoticeDisplay() {
             if ($('#notice').is(':checked')) {
-                $('#notice-text').show();
+                showTextEditor('notice-text');
             } else {
-                $('#notice-text').hide();
+                hideTextEditor('notice-text');
             }
+        }
+
+        function showTextEditor(selector) {
+            $('#' + selector).show();
+            tinymce.init({
+                selector: '#' + selector,
+                skin: 'chatter',
+                plugins: chatter_tinymce_plugins,
+                toolbar: chatter_tinymce_toolbar,
+                menubar: false,
+                statusbar: false,
+                height : '300',
+                content_css : '/vendor/devdojo/chatter/assets/css/chatter.css',
+                template_popup_height: 380
+            });
+        }
+
+        function hideTextEditor(selector) {
+            tinymce.get(selector).destroy();
+            $('#' + selector).hide();
         }
 
         function createJqueryElement(selector) {
@@ -253,7 +276,7 @@
             });
             values.info.classes = dayNames.join(', ');
             if ($('#notice').is(':checked')) {
-                values.info.notice = $('#notice-text').val();
+                values.info.notice = tinymce.get('notice-text').getContent();
             }
             return values;
         };

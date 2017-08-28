@@ -65,7 +65,7 @@
             @if (isset($dojo->info['notice']))
                 <div class="card border-danger mt-3 w-100">
                     <div class="card-body text-danger">
-                        <p class="card-text"> {{ $dojo->info['notice'] }} </p>
+                        <p class="card-text"> {!! $dojo->info['notice'] !!} </p>
                     </div>
                 </div>
             @endif
